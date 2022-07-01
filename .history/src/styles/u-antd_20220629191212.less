@@ -1,0 +1,176 @@
+@import './theme.less';
+
+// 时间选择器样式
+.ant-picker-cell-selected .ant-picker-cell-inner {
+  background-color: @primary-color2 !important;
+}
+.ant-picker-cell-today .ant-picker-cell-inner {
+  color: @primary-color2;
+  &::before {
+    border-color: @primary-color2 !important;
+  }
+}
+.ant-picker-content .ant-picker-cell-selected {
+  color: #fff !important;
+}
+
+// 弹窗
+.ant-modal {
+  .ant-modal-title {
+    font-weight: 600;
+  }
+  .ant-modal-close-x {
+    color: #646560;
+    font-weight: 100;
+    svg {
+      display: none;
+    }
+    &::after {
+      font-family: 'udianfont' !important;
+      content: '\e7b4';
+      position: relative;
+      top: -2px;
+    }
+  }
+}
+// 弹窗重写样式
+.ant-modal-content {
+  border-radius: 4px;
+}
+.ant-modal-header {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.ant-modal-body {
+  padding: 16px;
+}
+.ant-modal-footer {
+  border: none;
+  padding: 16px 16px 24px 16px;
+  .ant-btn {
+    margin-left: 16px !important;
+    border-radius: 2px;
+  }
+}
+
+// 下拉选择框
+.ant-select {
+  .ant-select-arrow {
+    width: 6px;
+    display: block;
+    .anticon {
+      position: relative;
+      svg {
+        display: none;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: -6px;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-top: 6px solid #bfbfbf;
+        border-right: 4px solid transparent;
+        border-bottom: 3px solid transparent;
+      }
+    }
+  }
+  .ant-select-selection-placeholder {
+    color: @disabled-color;
+  }
+  .anticon-close-circle {
+    font-size: 12px;
+    svg {
+      display: none !important;
+    }
+    &::after {
+      display: block;
+      font-family: 'udianfont' !important;
+      content: '\e7bb';
+      font-size: 18px !important;
+    }
+  }
+  .ant-select-selection-item {
+    margin-right: 14px;
+    span[style] {
+      color: rgba(0, 0, 0.85) !important;
+    }
+  }
+}
+.ant-select-dropdown {
+  .ant-select-item-option-selected,
+  .ant-select-item-option-active {
+    font-weight: normal !important;
+  }
+}
+// 输入框样式修改
+.ant-input-suffix {
+  .anticon-close-circle {
+    svg {
+      display: none;
+    }
+    &::after {
+      margin-right: -4px;
+      font-family: 'udianfont' !important;
+      content: '\e7bb';
+      font-size: 18px;
+    }
+  }
+}
+
+.ant-input {
+  &::placeholder {
+    color: @disabled-color !important;
+  }
+}
+
+// textarea 字数样式修改
+.ant-form-item {
+  .ant-input-textarea-show-count {
+    position: relative;
+  }
+  .ant-input-textarea-show-count::after {
+    position: absolute;
+    bottom: 3px;
+    right: 12px;
+    z-index: 999;
+    margin-bottom: 0 !important;
+    background-color: #fff;
+  }
+}
+.ant-input-textarea {
+  .ant-input {
+    padding-right: 20px;
+  }
+  .anticon-close-circle {
+    svg {
+      display: none;
+    }
+    &::after {
+      position: relative;
+      top: 6px;
+      margin-right: -4px;
+      font-family: 'udianfont' !important;
+      content: '\e7bb';
+      font-size: 18px;
+      background-color: #fff;
+    }
+  }
+}
+
+// 菜单
+.ant-menu-inline-collapsed-tooltip {
+  display: none !important;
+  opacity: 0;
+}
+.ant-menu-submenu-title[data-menu-id*="empty"] {
+  .ant-menu-submenu-arrow {
+    display: none;
+  }
+  .empty {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
