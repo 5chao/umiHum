@@ -11,7 +11,6 @@ const HomePage: React.FC = () => {
   const intl = useIntl();
   const msg = intl.formatMessage({id: 'welcome'})
   
-  console.log(getLocale())
 
   return <div className={styles.container}>
         <Guide name={trim(name)} />

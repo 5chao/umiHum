@@ -258,6 +258,7 @@ const TableList: React.FC<unknown> = () => {
             })}
             params={{
               id: row?.name,
+              pageSize: 50
             }}
             columns={columns}
           />

@@ -1,12 +1,29 @@
+@sliderBg: #1A52B3;
+@openMenuBg: #18438D;
+@activeMenuBg: #2B67E5;
+
 .ant-layout-sider-collapsed {
   .ant-pro-sider-logo {
     display: flex;
     justify-content: center;
-    align-items: center;
-  
+    align-items: center; 
   }
 }
 
+.ant-layout-sider {
+  background-color: @sliderBg;
+  .ant-menu {
+    background-color: @sliderBg;
+  }
+  .ant-menu-sub {
+    background-color: @openMenuBg !important;
+  }
+  .ant-pro-sider-collapsed-button {
+    border-top: none;
+  }
+}
+
+// 菜单折叠
 .ant-menu-inline-collapsed {
   text-align: center;
   
@@ -24,4 +41,98 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+  .udianfont {
+    font-size: 26px !important;
+    color: #fff;
+  }
+  .ant-menu-submenu-selected {
+    background-color: @activeMenuBg;
+  }
+  .ant-menu-submenu-active {
+    background-color: @activeMenuBg;
+  }
+}
+.ant-menu {
+  .ant-menu-submenu-selected {
+    background-color: #2b67e5 !important;
+    &.ant-menu-submenu-open {
+      background: none !important;
+    }
+  }
+  .udianfont {
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+    font-size: 20px;
+  }
+  > .ant-menu-submenu {
+    &:hover {
+      background-color: #2b67e5 !important;
+    }
+  }
+  .ant-menu-item {
+    &:hover {
+      background-color: #2b67e5 !important;
+    }
+  }
+}
+
+// 弹出的子菜单
+.ant-menu-submenu-popup {
+  margin-left: 30px;
+  left: 74px !important;
+  .ant-menu {
+    padding: 2px 12px;
+    background-color: #fff !important;
+  }
+  .ant-menu-item {
+    margin-bottom: 1px !important;
+    color: #323232;
+    a {
+      color: #323232 !important;
+    }
+    &.ant-menu-item-selected,
+    &:hover {
+      background-color: #d4e0f9 !important;
+      color: #2B67E5 !important;
+      a {
+        color: #2B67E5 !important;
+      }
+    }
+    &[data-menu-id*="sub-menu"] {
+      border-bottom: 1px solid #f5f5f5;
+    }
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -18px;
+    border-left: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-right: 10px solid #fff;
+    border-bottom: 8px solid transparent;
+  }
+}
+
+// 左侧导航栏
+.ant-layout-sider  {
+  height: 100vh;
+  .ant-menu {
+    a {
+      display: block;
+    }
+  }
+ 
+  &::-webkit-scrollbar {
+    /* 滚动条整体部分 */
+    width:0;
+    margin-right: 2px;
+  }
+  ::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+  
 }

@@ -12,6 +12,16 @@ const {queryMenuList} = services.MenuController
 export default () => {
   const [collapsed, setCollapsed] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [selectedKeys, setSelectedKeys] = useState([] as any)
+
+  const onSelectHandle = ({item, selectedKeys} : any) => {
+    //console.log(item, selectedKeys)
+    setSelectedKeys(selectedKeys)
+  }
+
+  const menuClickHandle = (itemProps: any) => {
+    setSelectedKeys([itemProps.key])
+  }
 
 
   return <div style={{height:'100vh'}}>
@@ -28,10 +38,9 @@ export default () => {
           setLoading(true)
           const {data } = await queryMenuList()
           setLoading(false)
-          
-          console.log(data, '|--data--')
-
-          return menuTransform(data.list)
+          let _data = menuTransform(data.list)
+          setSelectedKeys([_data[0].key])
+          return _data
           
         }
       }}
@@ -42,24 +51,34 @@ export default () => {
         }
         if (collapsed) {
           if (itemProps.single) {
-            return <Link to={itemProps.path}>{itemProps.name}</Link>
+            return <Link to={itemProps.path}><span className={`udianfont ${itemProps.icon}`} />{itemProps.name}</Link>
+          }
+          if (itemProps.subTitle) {
+            return <div><span className={`udianfont ${itemProps.icon}`} />{itemProps.name}</div>
           }
           return <Link to={itemProps.path}>{itemProps.name}</Link>
         }
        
-        return <Link to={itemProps.path}>{itemProps.icon && <span className={`udianfont ${itemProps.icon}`}></span>}{itemProps.name}</Link>
+        return <Link to={itemProps.path}>{itemProps.name}</Link>
       }}
       subMenuItemRender={(itemProps: any) => {
         if (itemProps.single) {
-          return <Link className="empty" to={itemProps.path}>{itemProps.icon && itemProps.icon}{itemProps.name}</Link>
+          return <Link className="empty" onClick={() => menuClickHandle(itemProps)} to={itemProps.path}><span className={`udianfont ${itemProps.icon}`} />{collapsed ? '' : itemProps.name}</Link>
         }
         if (collapsed) {
-          return <Link to={itemProps.routes[0].path}>{itemProps.icon && <span className={`udianfont ${itemProps.icon}`}></span>}</Link>
+          return <Link to={itemProps.routes[0].path}>{itemProps.icon && <span className={`udianfont ${itemProps.icon}`} />}</Link>
         }
-        return <div>{itemProps.icon && <span className={`udianfont ${itemProps.icon}`}></span>}{itemProps.name}</div>
+        return <div><span className={`udianfont ${itemProps.icon}`} />{itemProps.name}</div>
       }}
-      collapsedButtonRender={() => <div onClick={() => setCollapsed(!collapsed)}>7878</div>}
-     
+      collapsedButtonRender={() => <div onClick={() => setCollapsed(!collapsed)}>
+        {collapsed ? <span className="udianfont udian-shou1"></span> : <span className="udianfont udian-shen"></span>}
+
+      </div>}
+      menuProps={{
+        selectedKeys,
+        onSelect: onSelectHandle
+      }}
+      
     >
       <div className="page-wrapper">
         <Outlet />

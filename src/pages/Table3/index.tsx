@@ -164,6 +164,7 @@ const TableList: React.FC<unknown> = () => {
         request={async (params, sorter, filter) => {
           const { data, success } = await queryUserList({
             ...params,
+            pageSize:50,
             // FIXME: remove @ts-ignore
             // @ts-ignore
             sorter,
@@ -175,6 +176,9 @@ const TableList: React.FC<unknown> = () => {
           };
         }}
         columns={columns}
+        params={{
+          pageSize: 50
+        }}
         rowSelection={{
           onChange: (_, selectedRows) => setSelectedRows(selectedRows),
         }}
@@ -258,6 +262,7 @@ const TableList: React.FC<unknown> = () => {
             })}
             params={{
               id: row?.name,
+              pageSize: 50
             }}
             columns={columns}
           />

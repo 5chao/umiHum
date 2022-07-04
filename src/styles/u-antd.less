@@ -177,3 +177,12 @@
     color: rgba(255, 255, 255, 0.8);
   }
 }
+.ant-menu-item[data-menu-id*="sub-menu"] {
+  display: none !important;
+}
+.ant-menu-submenu-popup {
+  .ant-menu-item[data-menu-id*="sub-menu"] {
+    display: block !important;
+    pointer-events: none;
+  }
+}

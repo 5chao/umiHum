@@ -121,7 +121,7 @@ export default defineConfig({
     {
       name: '事故分工',
       path: '/accidentDivision',
-      component: './Home',
+      component: './Table',
     },
     {
       name: '事故处置',
@@ -131,12 +131,12 @@ export default defineConfig({
     {
       name: '处置审核',
       path: '/accidentHandle',
-      component: './Home',
+      component: './Table2',
     },
     {
       name: '地图实时风险点',
       path: '/riskMap',
-      component: './Home',
+      component: './Table3',
     },
     {
       name: '风险点管理',
